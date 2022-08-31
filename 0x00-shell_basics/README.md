@@ -29,3 +29,5 @@ The file 6-firstdirectory, creates a directory named /tmp/my_first_directory/
 
 The file 7-movethatfile, moves the file betty from /tmp/ to /tmp/my_dirst_directory/
 
+The file 8-firstdelete, deletes the file /tmp/my_first_directory/betty.
+
