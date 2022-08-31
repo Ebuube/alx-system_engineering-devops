@@ -22,3 +22,6 @@ Long format
 with user and group IDs displayed numerically
 
 And hidden files (starting with .)
+
+The file 6-firstdirectory, creates a directory named /tmp/my_first_directory/
+
