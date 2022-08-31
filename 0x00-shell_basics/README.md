@@ -52,7 +52,7 @@ The file 100-lets_move, moves all files beginning with an uppercase letter to th
 
 The file 101-clean_emacs,  deletes all files in the current working directory that end with the character ~.
 
-The file 102-tree t creates the directories welcome/, welcome/to/ and welcome/to/school in the current directory.
+The file 102-tree creates the directories welcome/, welcome/to/ and welcome/to/school in the current directory.
 You are only allowed to use two spaces (and lines) in your script, not more.
 
 
