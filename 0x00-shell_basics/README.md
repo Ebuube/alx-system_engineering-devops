@@ -9,4 +9,6 @@ The file 1-listit, displays the contents of your current directory.
 The file 2-bring_me_home, changes the working directory to the user's home directory
 
 
+The file 3-listfiles, displays the current directory's content in long format
+
 
