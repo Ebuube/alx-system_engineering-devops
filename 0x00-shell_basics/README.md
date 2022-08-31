@@ -31,3 +31,6 @@ The file 7-movethatfile, moves the file betty from /tmp/ to /tmp/my_dirst_direct
 
 The file 8-firstdelete, deletes the file /tmp/my_first_directory/betty.
 
+The file 9-firstdirdeletion, deletes the directory /tmp/my_first+directory/
+
+
