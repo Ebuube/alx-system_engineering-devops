@@ -14,3 +14,11 @@ The file 3-listfiles, displays the current directory's content in long format
 
 The file 4-listmorefiles, displays current directory contents, including hidden files (starting with .). Use the long format.
 
+
+The file 5-listfilesdigitonly, display current directory contents.
+
+Long format
+
+with user and group IDs displayed numerically
+
+And hidden files (starting with .)
