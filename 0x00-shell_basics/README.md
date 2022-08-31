@@ -50,3 +50,6 @@ The file 14-copy_html, copies all the HTML files from the current working direct
 The file 100-lets_move, moves all files beginning with an uppercase letter to the directory /tmp/u.
 
 
+The file 101-clean_emacs,  deletes all files in the current working directory that end with the character ~.
+
+
