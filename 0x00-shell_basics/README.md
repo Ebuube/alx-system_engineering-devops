@@ -69,3 +69,7 @@ You can assume that all the files we will test with will have at least one lette
 
 The listing should end with a new line
 
+
+The file school.mgc  can be used with the command file to detect School data files. School data files always contain the string SCHOOL at offset 0.
+
+
