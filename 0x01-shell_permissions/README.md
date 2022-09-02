@@ -11,3 +11,5 @@ The file 4-emtpy creates an empty file called hello.
 
 The file 5-execute  adds execute permission to the owner of the file hello.
 
+The file 6-multiple_permissions adds execute permission to the owner and the group owner, and read permission to other users, to the file hello.
+
