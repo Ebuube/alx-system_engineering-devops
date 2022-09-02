@@ -7,3 +7,5 @@ The file 2-groups prints all the groups the current user is part of.
 
 The file 3-new_owner changes the owner of the file hello to the user betty.
 
+The file 4-emtpy creates an empty file called hello.
+
