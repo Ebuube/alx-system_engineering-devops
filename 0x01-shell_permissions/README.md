@@ -22,3 +22,5 @@ The file 8-James_Bond  sets the permission to the file hello as follows:
 
 	Other users: all the permissions
 
+The file 9-John_Doe sets the mode of the file hello to this:
+	-rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello
