@@ -30,3 +30,5 @@ The file 10-mirror_permission sets the mode of the file hello the same as ollehâ
 	The file hello will be in the working directory
 	The file olleh will be in the working directory
 
+The file 11-directories_permissions adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users. Regular files should not be changed.
+
