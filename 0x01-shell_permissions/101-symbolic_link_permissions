@@ -1,0 +1,3 @@
+#!/bin/bash
+chown  -L vincent:staff _hello
+The file 101-symbolic_link_permissions changes the owner and the group owner of _hello to vincent and staff respectively.
