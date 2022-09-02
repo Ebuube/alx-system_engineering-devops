@@ -9,3 +9,5 @@ The file 3-new_owner changes the owner of the file hello to the user betty.
 
 The file 4-emtpy creates an empty file called hello.
 
+The file 5-execute  adds execute permission to the owner of the file hello.
+
