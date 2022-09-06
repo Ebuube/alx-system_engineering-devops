@@ -42,3 +42,5 @@ The file 14-findthatword is a scipt that displays lines containing the pattern "
 
 The file 15-countthatword is a script that displays the number of lines that contain the patter \"bin\" in the file /etc/passwd
 
+The file 16-whatsnext displays lines containing the pattern “root” and 3 lines after them in the file /etc/passwd.
+
