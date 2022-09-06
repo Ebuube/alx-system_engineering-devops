@@ -56,3 +56,7 @@ The file 20-hiago is a sript that removes all letters c and C from input
 
 The file 21-reverse is a script that reverses its input
 
+The file 22-users_and_homes is a script that displays all users and their home directories, sorted by users.
+
+Based on the the /etc/passwd file
+
