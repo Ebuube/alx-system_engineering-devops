@@ -54,3 +54,5 @@ The file 19-AZ is a script that replace all characters A and c from input to Z a
 
 The file 20-hiago is a sript that removes all letters c and C from input
 
+The file 21-reverse is a script that reverses its input
+
