@@ -50,3 +50,5 @@ The file 18-letteronly is a script that displays  all lines of the file /etc/ssh
 
 include capital letters as well
 
+The file 19-AZ is a script that replace all characters A and c from input to Z and e respectively.
+
