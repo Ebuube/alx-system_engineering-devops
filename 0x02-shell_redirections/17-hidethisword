@@ -1,0 +1,2 @@
+#!/bin/bash
+grep --invert-match "bin" /etc/passwd #grep -v "bin" /etc/passwd
