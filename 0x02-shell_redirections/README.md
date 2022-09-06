@@ -52,3 +52,5 @@ include capital letters as well
 
 The file 19-AZ is a script that replace all characters A and c from input to Z and e respectively.
 
+The file 20-hiago is a sript that removes all letters c and C from input
+
