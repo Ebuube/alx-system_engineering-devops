@@ -60,3 +60,11 @@ The file 22-users_and_homes is a script that displays all users and their home d
 
 Based on the the /etc/passwd file
 
+The file 100-empty_casks contains a command that finds all empty files and directories in the current directory and all sub-directories.
+
+Only the names of the files and directories should be displayed (not the entire path)
+Hidden files should be listed
+One file name per line
+The listing should end with a new line
+You are not allowed to use basename, grep, egrep, fgrep or rgrep
+
