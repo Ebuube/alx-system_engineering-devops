@@ -16,3 +16,7 @@ The file 6-create_local_variable is a script that creates a new local variable.
 Name: BEST
 Value: School
 
+The file 7-create_global_variable is a script that creates a new global variable
+Name: BEST
+Value: School
+
