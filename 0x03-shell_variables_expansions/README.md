@@ -10,3 +10,5 @@ The file 3-paths is a script that counts the number of directories in the PATH.
 
 The file 4-global_variables is a script that lists environment variables.
 
+5-local_variablesl is a script that lists all local variables and environment variables, and functions.
+
