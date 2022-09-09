@@ -8,3 +8,5 @@ The file 2-file is a script that adds /action to the PATH. /action should be the
 
 The file 3-paths is a script that counts the number of directories in the PATH.
 
+The file 4-global_variables is a script that lists environment variables.
+
