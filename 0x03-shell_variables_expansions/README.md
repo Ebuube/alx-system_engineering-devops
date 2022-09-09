@@ -12,3 +12,7 @@ The file 4-global_variables is a script that lists environment variables.
 
 5-local_variablesl is a script that lists all local variables and environment variables, and functions.
 
+The file 6-create_local_variable is a script that creates a new local variable.
+Name: BEST
+Value: School
+
