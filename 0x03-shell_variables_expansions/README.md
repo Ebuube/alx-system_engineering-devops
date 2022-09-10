@@ -53,3 +53,5 @@ The script should display the number in base 16, followed by a new line
 
 The file 101-rot13 is a script that encodes and decodes text using the rot13 encryption. Assume ASCII.
 
+The file 102-odd is a script that prints every other line from the input, starting with the first line.
+
