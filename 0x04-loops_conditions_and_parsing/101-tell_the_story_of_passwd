@@ -1,33 +1,6 @@
 #!/usr/bin/env bash
-# Display the content of the file ``/etc/passwd``, using the ``while loop + IFS``
-#
-# Format:
-# ``The user USERNAME is part of the GROUP_ID gang, lives in HOME_DIRECTORY and rides COMMAND/SHELL. USER ID's place is protected by the passcode PASSWORD, more info about the user here: USER ID INFO``
+# Tell story of passwd file
 
-file="/etc/passwd"
-
-while IFS=' ' read -r line; do
-	# Declare an empty array
-	declare -a INFO=()
-
-	# append new items to the array
-
-	i=1
-	while [[ $i -le 10 ]]; do
-		dummy=$( echo "$line" | cut --delimiter=':' --fields=$i )
-		INFO+=("$dummy")
-		i+=1
-	done
-
-	# $INFO[0] = USERNAME
-	# $INFO[1] = PASSWORD
-	# $INFO[2] = USER ID
-	# $INFO[3] = GROUP ID
-	# $INFO[4] = USER ID INFO
-	# $INFO[5] = HOME DIRECTORY
-	# $INFO[6] = COMMAND/SHELL
-
-	# echo "The user ${INFO[0]} is part of the ${INFO[3]} gang, lives in ${INFO[5]} and rides ${INFO[6]}. ${INFO[2]}'s place is protected by the passcode ${INFO[1]}, more info about the user here: ${INFO[4]}"
-	echo "The user ${INFO[0]} is part of the ${INFO[3]} gang, lives in ${INFO[5]} and rides ${INFO[6]}. ${INFO[2]}'s place is protected by the passcode ${INFO[1]}, more info about the user here: ${INFO[4]}"
-
-done < "$file"
+while IFS=':' read -r f1 f2 f3 f4 f5 f6 f7; do
+	echo "The user $f1 is part of the $f4 gang, lives in $f6 and rides $f7. $f3's place is protected by the passcode $f2, more info about the user here: $f5"
+done < /etc/passwd
