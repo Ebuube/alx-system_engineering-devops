@@ -8,7 +8,7 @@ hour=12
 minutes=60
 
 x=0
-while [[ $x -lt hour ]]; do
+while [[ $x -le hour ]]; do
 	echo "Hour: $x"
 	y=1
 	while [[ $y -lt minutes ]]; do
