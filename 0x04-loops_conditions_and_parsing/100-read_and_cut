@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Display the content of the file ``/etc/passwd``
+# It only displays
+#	username
+#	user id
+#	Home directory path for the user
+
+file="/etc/passwd"
+end_of_file=0
+
+# open the file ``/etc/passwd`` for reading
+
+while [[ $end_of_file == 0 ]]; do
+	read -r line
+	end_of_file=$?
+	if [[ $end_of_file == 0 ]]
+	then
+		info=$( echo "$line" | cut --delimiter=':' --fields=1,3,6 )
+		echo "$info"
+	fi
+done < "$file"
