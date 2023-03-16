@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Gives the user information about the ``school`` file
+#
+# If the file exists displays:
+#	``school file exists``
+# If the file does not exist:
+#	``school file does not exist
+# If the file exists:
+#	if the file is empty:
+#		``school file is empty``
+#	if the file is not empty:
+#		``school file is not empty``
+#	if the file is a regular file:
+#		``school file is a regular file
+#	if the file is not a regular file: (nothing)
+#
+
+file="./school"
+
+if [[ -e $file ]]
+then
+	echo "school file exists"
+
+	if [[ ! -s $file ]]
+	then
+		echo "school file is empty"
+	else
+		echo "school file is not empty"
+	fi
+
+	if [[ -f $file ]]
+	then
+		echo "school file is a regular file"
+	fi
+
+else
+	echo "school file does not exist"
+fi
