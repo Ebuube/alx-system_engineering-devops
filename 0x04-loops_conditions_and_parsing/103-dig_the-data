@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#  Parse Apache log file using ``awk``
+#  This Script groups visitors by ``IP`` and ``HTTP`` status code, and displays this
+#+ this data
+
+#  The exact format must be:
+#  OCCURENCE_NUMBER IP HTTP_CODE
+#  In list format
+
+#  In an apache log file, the columns 1 and 9 are the IP and HTTP_CODE
+#+ respectively
+
+awk '{print $1" "$9}' apache-access.log | uniq -c | sort -n -r
