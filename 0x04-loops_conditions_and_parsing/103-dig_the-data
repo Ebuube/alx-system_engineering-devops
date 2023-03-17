@@ -10,4 +10,4 @@
 #  In an apache log file, the columns 1 and 9 are the IP and HTTP_CODE
 #+ respectively
 
-awk '{print $1" "$9}' apache-access.log | uniq -c | sort -n -r
+awk '{print $1" "$9}' apache-access.log | sort | uniq -c | sort -r -n
