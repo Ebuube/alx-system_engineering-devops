@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# A script that stops the ``4-to_infinity_and_beyond``
+# shellcheck disable=SC2009
+
+# my_pid=$(ps auxf | grep 4-to_infinity_and_beyond | awk '{print $2}')
+
+
+pkill -9 $(ps auxf | grep 4-to_infinity_and_beyond | grep bash | awk '{print $2}')
+
+# my_pid=$(ps auxf | grep 4-to_infinity_and_beyond | grep bash | awk '{print $2}')
+
+# kill -9 "$my_pid"
