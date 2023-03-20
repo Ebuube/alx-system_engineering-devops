@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # A bash script that displays message indefinitely
 
-message="I am invincible!!"
+message="I am invincible!!!"
 
 # Display this message on receiving SIGTERM signal
 trap 'echo $message' TERM
