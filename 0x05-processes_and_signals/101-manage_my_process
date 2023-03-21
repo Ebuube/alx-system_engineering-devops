@@ -34,12 +34,12 @@ then
 	echo "$my_process started"
 elif [ "${1}" == "stop" ]
 then
-	kill "$(cat my_ppid)"
+	kill "$(cat $my_ppid)"
 	rm "$my_ppid"
 	echo "$my_process stopped"
 elif [ "$1" == "restart" ]
 then
-	kill "$(cat my_ppid)"
+	kill "$(cat $my_ppid)"
 	rm "my_ppid"
 	./"$my_process" &
 	echo "$!" > "$my_ppid"
