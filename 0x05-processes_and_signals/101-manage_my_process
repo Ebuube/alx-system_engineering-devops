@@ -13,7 +13,11 @@ then
 fi
 
 # Check for inappropriate commands
-if [ "$1" != "start" ] -o [ "$1" != "stop" ] -o [ "$1" != "restart" ]
+if [ "$1" != "start" ] -o [ "$1" != "stop" ]
+then
+	echo "Usage: $my_process {start|stop|restart}"
+	exit $?
+elif [ "$1" != "restart" ]
 then
 	echo "Usage: $my_process {start|stop|restart}"
 	exit $?
