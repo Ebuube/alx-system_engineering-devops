@@ -3,24 +3,26 @@
 
 my_process="manage_my_process"
 my_ppid="/var/run/my_process.pid"
-
+exit_msg="Usage: $my_process {start|stop|restart}"
 
 # Check for excess or deficit command line arguments
 if [ "$#" -ne 1 ]
 then
-	echo "Usage: $my_process {start|stop|restart}"
+	echo "$exit_msg"
 	exit $?
 fi
 
 # Check for inappropriate commands
-if [ "$1" != "start" ] -o [ "$1" != "stop" ]
+if [ "$1" == "start" ]
 then
-	echo "Usage: $my_process {start|stop|restart}"
-	exit $?
-elif [ "$1" != "restart" ]
-then
-	echo "Usage: $my_process {start|stop|restart}"
-	exit $?
+	if [ "$1" == "stop" ]
+	then
+		if [ "$1" != "restart" ]
+		then
+			echo "$exit_msg"
+			exit $?
+		fi
+	fi
 fi
 
 
