@@ -7,6 +7,5 @@ my_pid=$(ps auxf | grep 7-highlander | grep bash | awk '{print $NF}')
 
 if [ -n "$my_pid" ]
 then
-	echo "my_pid is $my_pid"	# to be removed
 	pkill --signal=SIGKILL -f "$my_pid"
 fi
