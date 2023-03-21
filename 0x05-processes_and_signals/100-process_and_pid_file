@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#  A Bash script that manipulates a file
+
+#  Create the file ``/var/run/myscript.pid`` containing its PID
+echo $? > /var/run/myscript.pid
+
+#  Display ``To infinity and beyond`` indefinitely
+while true; do
+	echo "To infinitiy and beyond"
+done
+
+#  Display ``I hate the kill command`` when receiving a SIGTERM signal
+trap "echo 'I hate the kill command'" TERM
+
+#  Display ``Y U no love me?!`` when receiving a SIGNINT signal
+trap "echo 'Y U no love me?!'" INT
+
+#  Delete the file ``/var/run/myscript.pid`` and terminates itself,
+#+ when receiving a SIGQUIT or SIGTERM signal
+trap "rm /var/run/myscript.pid; exit" QUIT TERM
