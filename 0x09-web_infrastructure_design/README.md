@@ -3,7 +3,7 @@
 
 ## 0. Simple web stack
 
-A lot of websites are powered by simple web infrastructure, a lot of time it is composed of a single server with a [LAMP stack](https://intranet.alxswe.com/rltoken/YVDX0XsC6XHp0nmezvT9vQ).
+A lot of websites are powered by simple web infrastructure, a lot of time it is composed of a single server with a [LAMP stack](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29).
 
 On a whiteboard, design a one server web infrastructure that hosts the website that is reachable via `www.foobar.com`. Start your explanation by having a user wanting to access your website.
 
@@ -93,7 +93,8 @@ On a whiteboard, design a three server web infrastructure that hosts the website
 ## 3. Scale up
 
 Readme
-	* [Application server vs web server](https://intranet.alxswe.com/rltoken/toFi_SdFHyi2MaELB8ekqw)
+
+	* [Application server vs web server](https://www.nginx.com/resources/glossary/application-server-vs-web-server/)
 
 <details>
 <summary>Requirements:</summary>
