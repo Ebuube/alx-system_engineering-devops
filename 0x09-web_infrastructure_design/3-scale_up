@@ -1,0 +1,16 @@
+3. Scale up
+===========
+
+Specifics about the infrastructure
+----------------------------------
+
+Secondary server:
+-----------------
+This server will always be passive. It will only be active during important occasions such as system update, server failure or congested traffic.
+
+Load balancer:
+--------------
+The load balancer connected to the secondary server is configured to be a weighted algorithm that will always favor the load balancer serving the primary servers.
+
+
+Diagram: https://drive.google.com/file/d/1-lTUF_Ca53i4NpgzKKhY56mdsH5Qd9xM/view?usp=share_link

@@ -1,6 +1,43 @@
 1. Distributed web infrastructure
 =================================
 
-Diagram: https://drive.google.com/file/d/1x_uE2knckw5Q4pIW9F9Ehb5kQ4CG_0Yi/view?usp=share_link
+Additional elements:
+--------------------
 
-Explanation: https://docs.google.com/document/d/1IzWW6ztOXARFfVU8t_ghAmsnr_AxYs35O2FyqueVPDc/edit?usp=share_link
+1) Load balancer: The load balancer will be distributing the traffic between the two of my primary servers.
+
+Distribution Algorithm:
+-----------------------
+The system will use the Round Robin algorithm where traffic will be sent sequentially to each of the servers, on a turn-by-turn basis. This equally distributes the traffic and enhances user experience.
+
+Load Balancer Configuration:
+----------------------------
+The load balancer will be configured to enable Active-Active setup. This means that both primary servers will be concurrently running.
+
+Database Primary-Replica Cluster:
+---------------------------------
+Also known as a Master-slave cluster, it is a means of configuring the database so that one database serves as the master to the others. The master/primary node writes to the slaves/replicas. 
+
+Difference between Primary node and Replica node:
+-------------------------------------------------
+The master database receives and processes write operations, and synchronizes the changes to all the slave databases.
+Read operations are served by the slave databases after being synchronized with the master database.
+
+
+ISSUES WITH THE INFRASTRUCTURE
+------------------------------
+
+Where are SPOF?
+---------------
+SPOFs are Single Points of Failure. This design is an improvement of the previous design. However, there are still some SPOFs that need more redundancy. Some of them are the load balancer, the router and the Domain Name System.
+
+Security Issues:
+----------------
+This design lacks security protocols. This infrastructure is not applicable to cases where security is of uttermost concern as the system is prone to attack by hackers. To improve this, firewalls need to be installed in the system to facilitate secured transactions.
+
+Monitoring:
+-----------
+“What can’t be measured, can’t be improved” - a famous quote in IT. Monitoring a system helps administrators compare the performance of the system against the universally accepted standards or against the goal of the design, prior to its application.
+
+
+Diagram: https://drive.google.com/file/d/1x_uE2knckw5Q4pIW9F9Ehb5kQ4CG_0Yi/view?usp=share_link
