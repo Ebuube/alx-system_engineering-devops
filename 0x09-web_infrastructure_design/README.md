@@ -92,9 +92,7 @@ On a whiteboard, design a three server web infrastructure that hosts the website
 
 ## 3. Scale up
 
-Readme
-
-	* [Application server vs web server](https://www.nginx.com/resources/glossary/application-server-vs-web-server/)
+Readme [Application server vs web server](https://www.nginx.com/resources/glossary/application-server-vs-web-server/)
 
 <details>
 <summary>Requirements:</summary>
