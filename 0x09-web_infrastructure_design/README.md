@@ -93,7 +93,6 @@ On a whiteboard, design a three server web infrastructure that hosts the website
 ## 3. Scale up
 
 Readme
-
 	* [Application server vs web server](https://intranet.alxswe.com/rltoken/toFi_SdFHyi2MaELB8ekqw)
 
 <details>
