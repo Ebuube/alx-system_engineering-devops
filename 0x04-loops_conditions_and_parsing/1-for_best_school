@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Display `Best School` 10 times using `for loop`
+
+COUNT=10
+PHRASE="Best School"
+
+for i in $(seq 1 $COUNT); do
+	echo "$PHRASE"
+	i=$i
+done
