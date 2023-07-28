@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Display the content of the current directory
+#	* In a list format
+#	* Where only the part of the name after the first dash is displayed
+# E.g.
+# ..$ ls
+# 100-mean 1-for_me 3-hello
+# ..$
+# ..$ ./8-for_ls
+# mean
+# for_me
+# hello
+
+for FILE in *; do
+	FILE_PRINTABLE=$( echo "$FILE" | cut --delimiter='-' --fields=2 )
+	echo "$FILE_PRINTABLE"
+done
