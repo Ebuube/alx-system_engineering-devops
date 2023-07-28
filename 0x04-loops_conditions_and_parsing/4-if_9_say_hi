@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Display `Best School` 10 times, but for the 9th iteration,
+# display `Best School` then `Hi` on a new line
+
+COUNT=0
+PHRASE="Best School"
+
+while [[ $COUNT -lt 10 ]]; do
+	echo "$PHRASE"
+	if [[ $COUNT -eq 8 ]];
+	then
+		echo "Hi"
+	fi
+	COUNT=$((COUNT + 1))
+done
