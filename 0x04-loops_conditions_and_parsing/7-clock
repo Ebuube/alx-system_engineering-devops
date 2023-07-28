@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Display the time for 12 hours and 59 minutes
+#
+#	display hours from 0 to 12
+#	display minutes from 1 to 59
+
+HOUR=12
+MINUTES=60
+
+i=0
+while [[ $i -le HOUR ]]; do
+	echo "Hour: $i"
+	tmp=1
+	while [[ $tmp -lt MINUTES ]]; do
+		echo "$tmp"
+		tmp=$((tmp + 1))
+	done
+	i=$((i + 1))
+done
