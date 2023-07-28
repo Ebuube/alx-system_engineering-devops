@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Empplifies the use of `if`, `elif` and `else` statements
 
-COUNT=0
+COUNT=1
 PHRASE="Best School"
 
 while [[ $COUNT -lt 10 ]]; do
