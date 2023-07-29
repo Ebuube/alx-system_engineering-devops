@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-# Display the content of the current directory
-#	* In a list format
-#	* Where only the part of the name after the first dash is displayed
-# E.g.
-# ..$ ls
-# 100-mean 1-for_me 3-hello
-# ..$
-# ..$ ./8-for_ls
-# mean
-# for_me
-# hello
+# Write a Bash script that displays:
+#
+#	The content of the current directory
+#	In a list format
+#	Where only the part of the name after the first dash is
+#		displayed (refer to the example)
+#
+# Requirements:
+#
+#	You must use the for loop (while and until are forbidden)
+#	Do not display hidden files
 
-for FILE in *; do
-	FILE_PRINTABLE=$( echo "$FILE" | cut --delimiter='-' --fields=2 )
-	echo "$FILE_PRINTABLE"
+FILES=$( ls )
+for FILE in $FILES; do
+	NAME=$( echo "$FILE" | cut --delimiter='-' --fields=2- )
+	echo "$NAME"
 done
