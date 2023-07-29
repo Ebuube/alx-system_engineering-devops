@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
-#  Filter out the visitor IP along with the HTTPS status code from
-#+ Apache log file
+Write a Bash script that displays the visitor IP along with the HTTP status code from the Apache log file.
 
-awk '{print $1" "$9}' apache-access.log
+# Requirement:
+#
+#	Format: IP HTTP_CODE
+#		* in a list format
+#		* See example
+#	You must use awk
+#	You are not allowed to use while, for, until and cut
+
+FILE='apache-access.log'
+
+awk '{print $1" "$9}' "$FILE"
