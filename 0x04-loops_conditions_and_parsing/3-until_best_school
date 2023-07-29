@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Display `Best School` 10 times using `until` loop
+# Display message 10 times
 
-COUNT=10
-PHRASE="Best School"
+MSG="Best School"
+I=0
+MAX=10
 
-until
-	[[ $COUNT -eq 0 ]]
-do
-	echo "$PHRASE"
-	COUNT=$((COUNT - 1))
+until [[ $I -eq MAX ]]; do
+	echo "$MSG"
+	I=$((I + 1))
 done
