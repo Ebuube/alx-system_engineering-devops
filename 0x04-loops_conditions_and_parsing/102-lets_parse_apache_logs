@@ -9,6 +9,4 @@ Write a Bash script that displays the visitor IP along with the HTTP status code
 #	You must use awk
 #	You are not allowed to use while, for, until and cut
 
-FILE='apache-access.log'
-
-awk '{print $1" "$9}' "$FILE"
+awk '{print $1" "$9}' apache-access.log
