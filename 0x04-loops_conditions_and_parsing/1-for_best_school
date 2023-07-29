@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Display `Best School` 10 times using `for loop`
+# Display message 10 times
 
-COUNT=10
-PHRASE="Best School"
+FIRST=0
+LAST=9
+STEP=1
+MSG="Best School"
 
-for i in $(seq 1 $COUNT); do
-	echo "$PHRASE"
-	i=$i
+# shellcheck disable=SC2034
+for I in $(seq $FIRST $STEP $LAST); do
+	echo "$MSG"
 done
