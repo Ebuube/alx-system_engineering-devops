@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Display the PIDs, along with the process name of processes
+# whose's name contain the word 'bash'
+ps | awk '{print $1, $NF}' | tail --lines=+2
