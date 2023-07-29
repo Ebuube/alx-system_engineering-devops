@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Display `Best School` 10 times, but for the 9th iteration,
-# display `Best School` then `Hi` on a new line
+#  A Bash script that displays Best School 10 times,
+#+ but for the 9th iteration, displays Best School and then Hi on a new line.
 
-COUNT=0
-PHRASE="Best School"
+I=0
+MAX=10
+MSG="Best School"
 
-while [[ $COUNT -lt 10 ]]; do
-	echo "$PHRASE"
-	if [[ $COUNT -eq 8 ]];
-	then
+while [[ $I -lt $MAX ]]; do
+	echo "$MSG"
+	if [[ $I -eq $((9 - 1)) ]]; then
 		echo "Hi"
 	fi
-	COUNT=$((COUNT + 1))
+	I=$((I + 1))
 done
