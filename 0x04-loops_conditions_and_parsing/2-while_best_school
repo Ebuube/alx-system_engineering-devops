@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Display `Best School` 10 times using a `while` loop
+# Display message 10 times
 
-COUNT=10
-PHRASE="Best School"
+I=0
+MAX=10
+MSG="Best School"
 
-while [[ $COUNT -gt 0 ]]; do
-	echo "$PHRASE"
-	COUNT=$((COUNT - 1))
+while [[ $I -lt $MAX ]]; do
+	echo "$MSG"
+	I=$((I + 1))
 done
