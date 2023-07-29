@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-# Display a list of currently running processes
-ps -auxf
+#  A script that displays a list of currently running processes
+#	* Must show all processes, for all users, including those which might
+#	not fave a TTY
+#	* Display in a user-oriented format
+#	* Show process hierarchy
+
+ps auxf

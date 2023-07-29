@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Display my PID
+# A script that displays its own PID
+
 echo $$

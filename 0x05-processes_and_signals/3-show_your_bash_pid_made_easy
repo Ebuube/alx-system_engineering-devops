@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Display the PIDs, along with the process name of processes
-# whose's name contain the word 'bash'
-pgrep -l 'bash'
+# A script that displays the PID, along the process name, of ``Bash`` processes
+# shellcheck disable=SC2009
 
-# ps | awk '{print $1, $NF}' | tail --lines=+2
+pgrep -l "bash"
+
+# Alternative code
+# ps auxf | grep bash | awk '{print $2" bash"}'
