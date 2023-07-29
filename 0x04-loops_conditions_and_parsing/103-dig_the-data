@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
-#  Parse Apache log file using `awd`
-#  This script groups visitors by ``IP`` and ``HTTP`` status code,
-#+ and displays this data
+# Using what you did in the previous exercise
+# Write a Bash script that groups visitors by IP and HTTP status code
+# and displays this data.
 #
-#  The exact format must be:
-#  * OCCURENCE_NUMBER IP HTTP_CODE
-#  * In list format
-#  * Ordered from the greatest to the lowest number of occurrences
+# Requirements:
 #
-#  In an apache log file, the column 1 and 9 are the IP and HTTP_CODE
-#+ respectively
+#	The exact format must be:
+#		* OCCURENCE_NUMBER IP HTTP_CODE
+#		* In list format
+#
+#	Ordered from the greatest to the lowest number of occurrences
+#		* See example
+#
+#	You must use awk
+#	You are not allowed to use while, for, until and cut
 
-awk '{print $1" "$9}' apache-access.log | sort | uniq -c | sort -r -n
+FILE="apache-access.log"
+
+awk '{print $1" "$9}' "$FILE" | sort | uniq --count | sort --reverse --numeric-sort
