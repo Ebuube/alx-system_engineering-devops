@@ -4,5 +4,5 @@
 FILE="/etc/passwd"
 
 while IFS=":" read -r field1 field2 field3 field4 field5 field6 field7; do
-	echo "The user $field1 is part of the $field4 gang, lives in $field6 and rides $field7. $field3's place is protected by the passcode $field2, more info about the user here: $field3 $field5"
+	echo "The user $field1 is part of the $field4 gang, lives in $field6 and rides $field7. $field3's place is protected by the passcode $field2, more info about the user here: $field5"
 done < "$FILE"
