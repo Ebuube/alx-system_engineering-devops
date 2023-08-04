@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Scrape out this information from a log file.
+#	* The sender phone number or name (including country code if present)
+#	* The receiver phone number of name (including country code if present)
+#	* The flags that were used
+
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 'log_filename'"
+	exit 1
+fi
+
+TEXT="$1"
+SCRAPER="./100-textme.rb"
+
+if [ ! -f "$TEXT" ]; then
+	echo "$TEXT" |
+	while read -r LINE; do
+		ruby "$SCRAPER" "$LINE"
+	done
+elif [ -f "$TEXT" ]; then
+	while read -r LINE; do
+		ruby "$SCRAPER" "$LINE"
+	done < "$TEXT"
+fi
