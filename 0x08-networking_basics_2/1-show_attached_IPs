@@ -3,13 +3,23 @@
 
 ifconfig -a |
 while IFS=':' read -r LINE; do
+	# IPv4 addresses are displayed between 'inet' and 'netmask'
+	# Sample of output from ifconfig
+	#
+	# enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        #	inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        #	inet6 fe80::a6:e5ff:fe4d:d8b6  prefixlen 64  scopeid 0x20<link>
+        #	ether 02:a6:e5:4d:d8:b6  txqueuelen 1000  (Ethernet)
+        #	RX packets 41992  bytes 3617442 (3.6 MB)
+        #	RX errors 0  dropped 0  overruns 0  frame 0
+        #	TX packets 24835  bytes 2483095 (2.4 MB)
+        #	TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
 	VAL=$( echo "$LINE" | grep --only-matching --perl-regexp '.*inet \K.*' )
 	LEN=${#VAL}
 	if [ "$LEN" -gt 0 ]; then
 		UNWANTED=$( echo "$VAL" | grep --only-matching --perl-regexp '.* \K.* netmask.*' )
 		IP=$( echo "${VAL%%$UNWANTED}" | tr --delete ' ' )
-		echo "VAl: '$VAL'"
-		echo "UNWANTED: '$UNWANTED'"
-		echo "IP: '$IP'"
+		echo "$IP"
 	fi
 done
