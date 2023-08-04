@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Ping an IP address passed as an argument
+
+if [ $# -lt 1 ]; then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+	exit 1
+else
+	NUM_TIMES=5
+	ping -c "$NUM_TIMES" "$1"
+fi
