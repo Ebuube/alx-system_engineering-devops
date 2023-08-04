@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Display all active IPv4 IPs on the machine it's executed on
+
+ifconfig -a |
+while IFS=':' read -r LINE; do
+	VAL=$( echo "$LINE" | grep --only-matching --perl-regexp '.*inet \K.*' )
+	LEN=${#VAL}
+	if [ "$LEN" -gt 0 ]; then
+		UNWANTED=$( echo "$VAL" | grep --only-matching --perl-regexp '.* \K.* netmask.*' )
+		IP=$( echo "${VAL%%$UNWANTED}" | tr --delete ' ' )
+		echo "VAl: '$VAL'"
+		echo "UNWANTED: '$UNWANTED'"
+		echo "IP: '$IP'"
+	fi
+done
