@@ -1,0 +1,24 @@
+ADDITIONAL ELEMENTS
+===================
+IMAGE: (https://drive.google.com/file/d/1i0H4yDjbfupq57a0pKVtnooqiHDNSsPo/view?usp=sharing)
+
+1) LOAD BALANCER: The load balancer will be distributing the traffic between the two of my primary servers.
+
+
+* DISTRIBUTION ALGORITHM: The system will use the Round Robin algorithm where traffic will be sent sequentially to each of the servers, on a turn-by-turn basis. This equally distributes the traffic and enhances user experience.
+
+* LOAD BALANCER CONFIGURATION: The load balancer will be configured to enable Active-Active setup. This means that both primary servers will be concurrently running.
+
+* DATABASE PRIMARY-REPLICA CLUSTER: Also known as a Master-slave cluster, it is a means of configuring the database so that one database serves as the master to the others. The master/primary node writes to the slaves/replicas. 
+
+* DIFFERENCE BETWEEN PRIMARY NODE AND REPLICA NODE: The master database receives and processes write operations, and synchronizes the changes to all the slave databases.
+Read operations are served by the slave databases after being synchronized with the master database.
+
+
+ISSUES WITH THE INFRASTRUCTURE
+------------------------------
+* WHERE ARE SPOF? SPOFs are Single Points of Failure. This design is an improvement of the previous design. However, there are still some SPOFs that need more redundancy. Some of them are the load balancer, the router and the Domain Name System.
+
+* SECURITY ISSUES: This design lacks security protocols. This infrastructure is not applicable to cases where security is of uttermost concern as the system is prone to attack by hackers. To improve this, firewalls need to be installed in the system to facilitate secured transactions.
+
+* MONITORING: “What can’t be measured, can’t be improved” - a famous quote in IT. Monitoring a system helps administrators compare the performance of the system against the universally accepted standards or against the goal of the design, prior to its application.
