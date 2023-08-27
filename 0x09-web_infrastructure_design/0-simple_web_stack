@@ -1,0 +1,44 @@
+0. Simple Web Stack
+---------------------
+IMAGE: (https://drive.google.com/file/d/1jM6j_RU5rfyPD-zQsK4Ss6jwQZaPls4f/view?usp=sharing)
+
+PROCEDURE OF COMMUNICATION
+* The client uses a browser to request access to a website domain called www.foobar.com. The browser sends the request to the router.
+
+* On picking the signal, the router retrieves the IP (Internet Protocol) address of the web domain from the Domain Name System (DNS).
+
+* The DNS responds with the corresponding IP address (8.8.8.8) of the server.
+	Now, the router makes HTTP/S requests from the specific server identified by the IP address 8.8.8.8.
+
+* Once called upon, the server responds to the HTTP/S request from the router. The router sends this back to the client’s browser.
+
+
+DETAILS
+=======
+
+* WHAT IS A SERVER?
+A server is a physical system or a computer program which manages access to a centralized resource or service in a network.
+
+* WHAT IS THE ROLE OF A DOMAIN NAME SYSTEM?
+It translates a human-friendly address to a network resource to a computer-friendly address to a network resource. Example. The address google.com is the human-friendly version of the computer address IPV4 8.8.8.8.
+
+* WHAT IS THE ROLE OF A WEB SERVER?
+It serves static web content to client computers on the network. It equally requests user-specific content from the application server in appropriate cases.
+
+* WHAT IS THE ROLE OF AN APPLICATION SERVER?
+An application server serves dynamic content to a client computer. It interacts with the database to generate such content.
+
+* WHAT IS THE ROLE OF A DATABASE?
+The database is a server that stores information in an organized manner and facilitates retrieval of stored information.
+
+* WHAT IS THE SERVER USING TO COMMUNICATE WITH THE COMPUTER OF THE USER REQUESTING THE WEBSITE?
+There is an intermediate device called the load-balancer. It receives requests, screens and authenticates the request before forwarding the request to appropriate servers on the network.
+
+
+FAULTS WITH THIS INFRASTRUCTURE
+-------------------------------
+* SPOF (SINGLE POINT OF FAILURE): The SPOF of a design is that component or set of components that causes the whole system to crash once they malfunction. This design has a lot of SPOFs such as the single DNS provider, the single server and the single router. Once any of them malfunctions, the whole system will be rendered useless as no work can be gotten from them anymore.
+
+* DOWNTIME: This is a measure of how long the system remains inactive during its lifetime. For example, when it is being updated or out-of-service.
+
+* CANNOT SCALE IF TOO MUCH INCOMING TRAFFIC: This means that the users will be denied some time of service whenever the infrastructure is trying to be scaled. Example, to update the server, the server needs to stop receiving requests before it can be worked on. This means that no user will have access to the website during the period.
