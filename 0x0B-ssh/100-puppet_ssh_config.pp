@@ -1,6 +1,6 @@
 # Client configuration file
 
-file { '/etc/ssh/config':
+file { '/etc/ssh/ssh_config':
   ensure  => present,
   content => '# Client-side configuration
 Host *
