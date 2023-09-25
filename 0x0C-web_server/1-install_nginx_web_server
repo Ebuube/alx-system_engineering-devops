@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Automate - installation and configuration of an Ubuntu macine to for nginx server
+# Ensure to use 'sudo' previleges if you are not a super user
+
+# Instal nginx server
+apt-get -y install nginx
+
+# Set ufw status - Adjust the Firewal
+ufw allow 'Nginx HTTP'
+
+# Create landing page
+mkdir -p /var/www/html
+echo 'Hello World!' > /var/www/html/index.html
+
+# Configure sites
+echo 'server {
+	# Ports to listen to
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	# landing page and file structure
+	root /var/www/html;
+	index index.html;
+
+	# Server to match for requests -> defaul server
+	server_name _;
+
+	# Search for a file, if not found then a directory else 404 message
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}' >> /etc/nginx/sites-available/default
+
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Reload nginx server
+service nginx restart
