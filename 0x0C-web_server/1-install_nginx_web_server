@@ -3,7 +3,7 @@
 # Ensure to use 'sudo' previleges if you are not a super user
 
 default_index='/var/www/html/index.nginx-debian.html'
-SITE='var/www/html'
+SITE='/var/www/html'
 server_config='/etc/nginx/sites-available/default'
 server_config_temp='./server_config_1'
 

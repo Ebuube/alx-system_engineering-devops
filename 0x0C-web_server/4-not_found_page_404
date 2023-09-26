@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# Automate - installation and configuration of an Ubuntu machine to for nginx server
+# Automate - installation and configuration of an Ubuntu macine to for nginx server
+# It has a custome error page
 # Ensure to use 'sudo' previleges if you are not a super user
 
 default_index='/var/www/html/index.nginx-debian.html'
-SITE='/var/www/html/'
+SITE='/var/www/html'
 server_config='/etc/nginx/sites-enabled/default'
-server_config_temp='./server_config_3'
+server_config_temp='./server_config_4'
+error_page="$SITE/404.html"
 
 # Install nginx server
 apt-get -y install nginx
@@ -18,6 +20,9 @@ chown -R "$USER":"$USER" "$SITE"
 
 # Create landing page
 echo 'Hello World!' > "$default_index"
+
+# Create error page
+echo "Ceci n'est pas une page" > "$error_page"
 
 # Configure server
 cp "$server_config_temp" "$server_config"
