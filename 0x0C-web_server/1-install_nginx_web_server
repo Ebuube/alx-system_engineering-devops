@@ -5,13 +5,13 @@
 default_index='/var/www/html/index.nginx-debian.html'
 
 # Install nginx server
-apt-get -y install nginx
+sudo apt-get -y install nginx
 
 # Set ufw status - Adjust the Firewal
-ufw allow 'Nginx HTTP'
+sudo ufw allow 'Nginx HTTP'
 
 # Create landing page
-echo 'Hello World!' > "$default_index"
+sudo echo 'Hello World!' > "$default_index"
 
 # Restart service
-service nginx start
+sudo service nginx start
