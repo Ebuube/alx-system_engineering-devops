@@ -60,7 +60,7 @@ server {
 	error_page 404 /404.html;
 	location = /404.html {
 		# to ensure it can't be accessed directly by clients
-		interal;
+		internal;
 	}
 
 	# pass PHP scripts to FastCGI server
