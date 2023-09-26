@@ -2,7 +2,9 @@
 # Automate - installation and configuration of an Ubuntu macine to for nginx server
 # Ensure to use 'sudo' previleges if you are not a super user
 
-# Instal nginx server
+default_index='/var/www/html/index.nginx-debian.html'
+
+# Install nginx server
 apt-get -y install nginx
 
 # Set ufw status - Adjust the Firewal
@@ -11,6 +13,10 @@ ufw allow 'Nginx HTTP'
 # Create landing page
 mkdir -p /var/www/html
 echo 'Hello World!' > /var/www/html/index.html
+if [[ -f "$default_index" ]];
+then
+	rm "$default_index"
+fi
 
 # Configure sites
 
@@ -32,8 +38,3 @@ echo 'server {
 		try_files $uri $uri/ =404;
 	}
 }' >> /etc/nginx/sites-available/default
-
-# ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-# Reload nginx server - not necessary
-# service nginx restart
