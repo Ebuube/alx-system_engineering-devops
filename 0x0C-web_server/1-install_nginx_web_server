@@ -38,3 +38,6 @@ echo 'server {
 		try_files $uri $uri/ =404;
 	}
 }' >> /etc/nginx/sites-available/default
+
+# Restart service
+service nginx start
