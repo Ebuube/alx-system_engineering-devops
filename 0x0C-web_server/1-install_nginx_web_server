@@ -13,6 +13,8 @@ mkdir -p /var/www/html
 echo 'Hello World!' > /var/www/html/index.html
 
 # Configure sites
+
+# shellcheck disable=SC2016
 echo 'server {
 	# Ports to listen to
 	listen 80 default_server;
