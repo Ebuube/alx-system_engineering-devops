@@ -11,33 +11,7 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 
 # Create landing page
-mkdir -p /var/www/html
-echo 'Hello World!' > /var/www/html/index.html
-if [[ -f "$default_index" ]];
-then
-	rm "$default_index"
-fi
-
-# Configure sites
-
-# shellcheck disable=SC2016
-echo 'server {
-	# Ports to listen to
-	listen 80 default_server;
-	listen [::]:80 default_server;
-
-	# landing page and file structure
-	root /var/www/html;
-	index index.html;
-
-	# Server to match for requests -> defaul server
-	server_name _;
-
-	# Search for a file, if not found then a directory else 404 message
-	location / {
-		try_files $uri $uri/ =404;
-	}
-}' >> /etc/nginx/sites-available/default
+echo 'Hello World!' > "$default_index"
 
 # Restart service
-service nginx restart
+service nginx start
