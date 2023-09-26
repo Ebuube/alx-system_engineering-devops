@@ -5,6 +5,7 @@
 default_index='/var/www/html/index.nginx-debian.html'
 SITE='var/www/html'
 server_config='/etc/nginx/sites-available/default'
+server_config_temp='./server_config_1'
 
 # Install nginx server
 apt-get -y install nginx
@@ -13,24 +14,6 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 
 # Configure server
-# shellcheck disable=SC2016
-echo 'server {
-	listen 80 default_server:
-	listen [::]:80 default_server;
-
-	root /var/www/html;
-
-	# Add index
-	index index.html
-
-	server_name _;
-
-	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
-	}
-}' > "$server_config"
 
 # Configure user to own site
 chown -R "$USER":"$USER" "$SITE"
@@ -38,5 +21,8 @@ chown -R "$USER":"$USER" "$SITE"
 # Create landing page
 echo 'Hello World!' > "$default_index"
 
+# Configure server
+cp "$server_config_temp" "$server_config"
+
 # Restart service
-service nginx start
+service nginx restart
