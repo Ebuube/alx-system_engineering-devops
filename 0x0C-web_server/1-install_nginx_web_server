@@ -40,4 +40,4 @@ echo 'server {
 }' >> /etc/nginx/sites-available/default
 
 # Restart service
-service nginx reload
+service nginx restart
