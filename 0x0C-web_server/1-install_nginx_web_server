@@ -31,7 +31,7 @@ echo 'server {
 	}
 }' >> /etc/nginx/sites-available/default
 
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-# Reload nginx server
-service nginx restart
+# Reload nginx server - not necessary
+# service nginx restart
