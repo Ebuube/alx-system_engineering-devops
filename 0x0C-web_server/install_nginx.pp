@@ -48,7 +48,7 @@ file { 'landing_page':
   require => File['set_site_owner'],
   path    => $index_dest,
   source  => $index_src,
-  owner  => $user,
+  owner   => $user,
   group   => $user,
 }
 
@@ -59,15 +59,8 @@ file { 'error_page':
   path    => $err_page_dest,
   require => File['set_site_owner'],
   source  => $err_page_src,
-  owner  => $user,
+  owner   => $user,
   group   => $user,
-}
-
-$prev_landing_page = "${site}/index.nginx-debian.html"
-file { 'previous_page':
-  ensure  => absent,
-  path    => $prev_landing_page,
-  require => File['set_site_owner'],
 }
 
 # Set pages for website
@@ -75,7 +68,7 @@ $dummy_file = "${home}/dummy_file"
 File {'set_pages':
   path    => $dummy_file,
   ensure  => absent,
-  require => [File['landing_page'], File['error_page'],File['previous_page']],
+  require => [File['landing_page'], File['error_page']],
 }
 
 # Configure server
