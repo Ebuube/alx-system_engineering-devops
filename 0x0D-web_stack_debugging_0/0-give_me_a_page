@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # commad to start apache
 
 service apache2 start
