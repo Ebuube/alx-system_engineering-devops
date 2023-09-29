@@ -8,6 +8,7 @@ server_config='/etc/nginx/sites-available/default'
 server_config_temp='./server_config_1'
 
 # Install nginx server
+apt-get -y update
 apt-get -y install nginx
 
 # Set ufw status - Adjust the Firewal
