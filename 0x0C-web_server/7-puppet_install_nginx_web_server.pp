@@ -47,7 +47,7 @@ file { 'landing_page':
   ensure  => present,
   require => File['set_site_owner'],
   path    => $index_dest,
-  content => "Hello World\n!",
+  content => "Hello World!\n",
   owner   => $user,
   group   => $user,
 }
