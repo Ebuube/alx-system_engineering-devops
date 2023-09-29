@@ -10,6 +10,7 @@ server_config_temp='./server_config_4'
 error_page="$SITE/404.html"
 
 # Install nginx server
+apt-get -y update
 apt-get -y install nginx
 
 # Set ufw status - Adjust the Firewal
