@@ -5,7 +5,7 @@
 default_index='/var/www/html/index.nginx-debian.html'
 SITE='/var/www/html/'
 server_config='/etc/nginx/sites-enabled/default'
-server_config_temp='./server_config_3'
+# server_config_temp='./server_config_3'
 
 # Install nginx server
 apt-get -y update
@@ -21,7 +21,30 @@ chown -R "$USER":"$USER" "$SITE"
 echo 'Hello World!' > "$default_index"
 
 # Configure server
-cp "$server_config_temp" "$server_config"
+# cp "$server_config_temp" "$server_config"
+# shellcheck disable=SC2016
+echo 'server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	# Add index
+	index index.html
+
+	server_name _;
+
+	location / {
+		# Fist attempt to server a request as file, then
+		# as directory, then fall back to displaying a 404 error.
+		try_files $uri $uri/ =404;
+	}
+
+	location /redirect_me {
+		# Have fun with redirection
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+	}
+}' > "$server_config"
 
 # Restart service
 service nginx restart
