@@ -22,7 +22,7 @@ chown -R "$USER":"$USER" "$SITE"
 echo 'Hello World!' > "$default_index"
 
 # Create error page
-echo -t "Ceci n'est pas une page" > "$error_page"
+echo -e "Ceci n'est pas une page" > "$error_page"
 
 # Configure server
 # cp "$server_config_temp" "$server_config"
