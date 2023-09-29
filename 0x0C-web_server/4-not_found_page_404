@@ -3,14 +3,13 @@
 # It has a custome error page
 # Ensure to use 'sudo' previleges if you are not a super user
 
-default_index='/var/www/html/index.nginx-debian.html'
+default_index='/var/www/html/index.html'
 SITE='/var/www/html'
 server_config='/etc/nginx/sites-enabled/default'
-server_config_temp='./server_config_4'
+# server_config_temp='./server_config_4'
 error_page="$SITE/404.html"
 
 # Install nginx server
-apt-get -y update
 apt-get -y install nginx
 
 # Set ufw status - Adjust the Firewal
@@ -25,8 +24,41 @@ echo 'Hello World!' > "$default_index"
 # Create error page
 echo "Ceci n'est pas une page" > "$error_page"
 
+
 # Configure server
-cp "$server_config_temp" "$server_config"
+# cp "$server_config_temp" "$server_config"
+
+# shellcheck disable=SC2016
+echo '# Configuration for server - ONWUTA EBUBE GIDEON
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	# Add index
+	index index.html
+
+	server_name _;
+
+	location / {
+		# First attempt to serve a request as file, then
+		# as directiory, then fall back to dispalying a 404 ERROR.
+		try_files $uri $uri/ =404;
+	}
+
+	location /redirect_me {
+		# Have fun with redirection
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+	}
+
+	# Create a custom 404 error page
+	error_page 404 /404.html;
+	location = /404.html {
+		# to ensure it cannot be accessed directly by clients
+		internal;
+	}
+}' > "$server_config"
 
 # Restart service
 service nginx restart
