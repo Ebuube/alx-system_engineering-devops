@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Debug our server to start running nginx
+rm /etc/nginx/sites-enabled/default
+ln --symbolic /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
