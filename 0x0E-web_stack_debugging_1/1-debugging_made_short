@@ -2,4 +2,4 @@
 # Debug our server to start running nginx
 ln --symbolic --force /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
-pkill --signal -SIGKILL nginx
+pkill --signal SIGKILL nginx
