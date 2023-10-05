@@ -5,9 +5,10 @@ site_available="$site-available/default"
 site_enabled="$site-enabled/default"
 site_bk="$site-enabled/prev_default"
 
-mv "$site_enabled" "$site_bk"
+# mv "$site_enabled" "$site_bk"
+rm "$site_enabled"
 ln --symbolic "$site_available" "$site_enabled"
 
 # There is a process already making use of the port
-# pkill nginx
-service nginx restart
+pkill nginx
+service nginx start
