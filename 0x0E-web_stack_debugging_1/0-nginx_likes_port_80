@@ -10,4 +10,4 @@ ln --symbolic "$site_available" "$site_enabled"
 
 # There is a process already making use of the port
 pkill nginx
-service nginx start
+service nginx restart
