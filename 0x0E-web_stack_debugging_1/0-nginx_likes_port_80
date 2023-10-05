@@ -3,7 +3,7 @@
 site='/etc/nginx/sites'
 site_available="$site-available/default"
 site_enabled="$site-enabled/default"
-site_bk="prev_$site_enabled"
+site_bk="$site-enabled/prev_default"
 
 mv "$site_enabled" "$site_bk"
 ln --symbolic "$site_available" "$site_enabled"
