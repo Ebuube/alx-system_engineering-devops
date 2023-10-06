@@ -5,10 +5,10 @@ proxy_config=/etc/haproxy/haproxy.cfg
 proxy_mgt=/etc/default/haproxy
 
 # Install haproxy
-apt-get update
-apt-get install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.6
-apt-get install haproxy=2.6.\*
+apt-get -y update
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.6
+apt-get -y install haproxy=2.6.\*
 
 # Configure HAProxy
 cp "$proxy_config" "$proxy_config.orig"		# backup
