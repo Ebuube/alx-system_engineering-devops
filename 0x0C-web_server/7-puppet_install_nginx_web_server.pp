@@ -47,7 +47,7 @@ file { 'landing_page':
   ensure  => present,
   require => File['set_site_owner'],
   path    => $index_dest,
-  content => "Hello World!",
+  content => "Hello World!\n",
   owner   => $user,
   group   => $user,
 }
@@ -58,7 +58,7 @@ file { 'error_page':
   ensure  => present,
   path    => $err_page_dest,
   require => File['set_site_owner'],
-  content => "Ceci n'est pas une page",
+  content => "Ceci n'est pas une page\n",
   owner   => $user,
   group   => $user,
 }
