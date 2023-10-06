@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Install and configure a HAProxy load balanacer
+
+proxy_config=/etc/haproxy/haproxy.cfg
+proxy_mgt=/etc/default/haproxy
+
+# Install haproxy
+apt-get update
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.6
+apt-get install haproxy=2.6.\*
+
+# Configure HAProxy
+cp "$proxy_config" "$proxy_config.orig"		# backup
+
+echo '
+# ONWUTA EBUBE GIDEON - HAProxy CONFIGURATION
+
+frontend ebube-frontend
+	bind *:80
+	mode http
+	default_backend ebube-backend
+
+backend ebube-backend
+	balance roundrobin
+	server 146392-web-01 18.207.2.78:80 check
+	server 146392-web-02 54.162.43.21:80 check' > "$proxy_config"
+
+# Enable HAProxy to be managed by init script
+echo 'ENABLED=1' >> "$proxy_mgt"
+
+# Update system with new configurations
+service haproxy restart
