@@ -87,6 +87,9 @@ server {
 
 	root /var/www/html;
 
+	# Include header in responses
+	add_header X-Served-By $hostname;
+
 	# Add index
 	index index.html
 
