@@ -19,10 +19,10 @@ ufw allow 'Nginx HTTP'
 chown -R "$USER":"$USER" "$SITE"
 
 # Create landing page
-echo 'Hello World!' > "$default_index"
+printf "Hello World!\n" > "$default_index"
 
 # Create error page
-echo "Ceci n'est pas une page" > "$error_page"
+printf "Ceci n'est pas une page\n" > "$error_page"
 
 # Configure server
 # cp "$server_config_temp" "$server_config"
