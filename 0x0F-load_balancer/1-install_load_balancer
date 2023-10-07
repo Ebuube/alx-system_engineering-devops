@@ -5,10 +5,11 @@ proxy_config=/etc/haproxy/haproxy.cfg
 proxy_mgt=/etc/default/haproxy
 
 # Install haproxy
-apt-get -y update
-apt-get -y install --no-install-recommends software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.6
-apt-get -y install haproxy=2.6.\*
+apt-get -assume-yes update
+# apt-get -y install --no-install-recommends software-properties-common
+# add-apt-repository -y ppa:vbernat/haproxy-2.6
+# apt-get -y install haproxy=2.6.\*
+apt-get --assume-yes install haproxy
 
 # Configure HAProxy
 cp "$proxy_config" "$proxy_config.orig"		# backup
@@ -24,7 +25,8 @@ frontend ebube-frontend
 backend ebube-backend
 	balance roundrobin
 	server 146392-web-01 18.207.2.78:80 check
-	server 146392-web-02 54.162.43.21:80 check' > "$proxy_config"
+	server 146392-web-02 54.162.43.21:80 check
+' > "$proxy_config"
 
 # Enable HAProxy to be managed by init script
 echo 'ENABLED=1' >> "$proxy_mgt"
