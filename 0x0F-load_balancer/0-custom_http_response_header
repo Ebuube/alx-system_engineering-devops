@@ -3,8 +3,8 @@
 # It has a custome error page
 # Ensure to use 'sudo' previleges if you are not a super user
 
-SITE='/var/www/html'
 default_index='/var/www/html/index.html'
+SITE='/var/www/html'
 server_config='/etc/nginx/sites-enabled/default'
 # server_config_temp='./server_config_4'
 error_page="$SITE/404.html"
@@ -16,15 +16,13 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 
 # Configure user to own site
-mkdir --parents "$SITE"
 chown -R "$USER":"$USER" "$SITE"
 
 # Create landing page
-echo "Hello World!" > "$default_index"
+printf "Hello World!\n" > "$default_index"
 
 # Create error page
-echo "Ceci n'est pas une page
-" > "$error_page"
+printf "Ceci n'est pas une page\n" > "$error_page"
 
 # Configure server
 # cp "$server_config_temp" "$server_config"
