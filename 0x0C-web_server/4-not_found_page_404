@@ -16,6 +16,7 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 
 # Configure user to own site
+mkdir --parents "$SITE"
 chown -R "$USER":"$USER" "$SITE"
 
 # Create landing page
