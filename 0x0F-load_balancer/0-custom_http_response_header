@@ -1,34 +1,33 @@
 #!/usr/bin/env bash
-# Automate - installation and configuration of an Ubuntu macine to for nginx server
+# Automate - installation and configuration of an ubuntu machine for nginx server
 # It has a custome error page
-# Ensure to use 'sudo' previleges if you are not a super user
+# Ensure to use 'sudo' privileges if you are not a super user
 
-default_index='/var/www/html/index.html'
-SITE='/var/www/html'
-server_config='/etc/nginx/sites-enabled/default'
-# server_config_temp='./server_config_4'
-error_page="$SITE/404.html"
+SITE=/var/www/html
+default_index="$SITE"/index.html
+server_config=/etc/nginx/sites-enabled/default
+error_page="$SITE"/404.html
 
 # Install nginx server
-apt-get -y install nginx
+apt-get --assume-yes update
+apt-get --assume-yes install nginx
 
-# Set ufw status - Adjust the Firewal
+# Set Firewall
 ufw allow 'Nginx HTTP'
 
 # Configure user to own site
-chown -R "$USER":"$USER" "$SITE"
+mkdir --parents "$SITE"
+chown --recursive "$USER":"$USER" "$SITE"
 
 # Create landing page
-printf "Hello World!\n" > "$default_index"
+echo "Hello World!" > "$default_index"
 
 # Create error page
-printf "Ceci n'est pas une page\n" > "$error_page"
-
-# Configure server
-# cp "$server_config_temp" "$server_config"
+echo "Ceci n'est pas une page
+" > "$error_page"
 
 # shellcheck disable=SC2016
-echo '# Configuration for server - ONWUTA EBUBE GIDEON
+echo '# CONFIGURATION FOR SERVER - ONWUTA EBUBE GIDEON
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -36,7 +35,7 @@ server {
 	root /var/www/html;
 
 	# Include header in response
-	add_header X-Served-By $hostname;
+	add_header X-Server-By $hostname;
 
 	# Add index
 	index index.html
@@ -44,20 +43,20 @@ server {
 	server_name _;
 
 	location / {
-		# First attempt to serve a request as file, then
-		# as directiory, then fall back to dispalying a 404 ERROR.
+		# First attempt to server a request as file, then
+		# as directory, then fall back to displaying a 404 ERROR
 		try_files $uri $uri/ =404;
 	}
 
 	location /redirect_me {
 		# Have fun with redirection
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+		rewrite ^/redirect_me(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	}
 
 	# Create a custom 404 error page
 	error_page 404 /404.html;
 	location = /404.html {
-		# to ensure it cannot be accessed directly by clients
+		# To ensure it cannot be accessed directly by clients
 		internal;
 	}
 }' > "$server_config"
