@@ -4,7 +4,7 @@ $server = 'nginx'
 
 # Update packages
 exec { 'apt-update':
-  command  => 'apt-get -y update',
+  command  => 'apt-get --assume-yes update',
   provider => 'shell',
 }
 
@@ -58,7 +58,7 @@ file { 'error_page':
   ensure  => present,
   path    => $err_page_dest,
   require => File['set_site_owner'],
-  content => "Ceci n'est pas une page\n",
+  content => "Ceci n'est pas une page\n\n",
   owner   => $user,
   group   => $user,
 }
@@ -103,7 +103,7 @@ server {
 
 	location /redirect_me {
 		# Have fun with redirection
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+		rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	}
 
 	# Create a custom 404 error page
