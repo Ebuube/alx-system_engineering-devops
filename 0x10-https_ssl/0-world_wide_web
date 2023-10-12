@@ -11,29 +11,36 @@ fi
 
 # Bash Function
 ENOARG=23	# No argument passed to function
+EMANYARG=26	# More than required number of arguments
+# Arg format: sub-domain.domain.ext
 audit()		# Audit a particular domain name
 {
-	if ! [ "$#" -eq  1 ]; then
-		echo "No argument passed"
+	if [ "$#" -gt  1 ]; then
+		echo "Invalid number of arguments passed to the '$0' function"
+		return "$EMANYARG"
+	elif [ "$#" -eq 0 ]; then
+		echo "No argument passed to the '$0' function"
 		return "$ENOARG"
-	fi
-	# echo "Arg: $1"	# test
+	fi 
+
 	ans=$( dig "$1" | grep -A1 'ANSWER SECTION' | tail -1 )
 	# echo "$ans"
-	msg=$( echo "$ans" | awk --field-separator ' ' '{print "The subdomain " $1" is a " $4 " record and points to " $5}' )
+	sub_domain_type=$( echo "$1" | cut --delimiter='.' --fields=1 )
+	echo -n "The subdomain $sub_domain_type is a "
+	msg=$( echo "$ans" | awk --field-separator ' ' '{print $4 " record and points to " $5}' )
 	echo "$msg"
 	return "$SUCCESS"
 }
-# Example of argument: www.holberton.online
 
-default="www"
-domain="$1"
-domain_type=$( echo "$1" | cut --delimiter='.' --fields=1 )
 
-if [ "$domain_type" == "$default" ]; then
-	echo "Your domain is the default domain: $domain_type"	# test
-	echo "Therefore, will audit: $default, lb-01, web-01 and web-02"	# test
-	root=$( echo "$domain" | cut --delimiter='.' --fields=2- )
+# Example of arguments:
+# 1 arg: holberton.online
+# 2 args: holberton.online web-02
+
+if [ "$#" -eq 1 ]; then
+	# Audit all of these subdomains
+
+	root="$1"
 	www="www.$root"
 	lb_01="lb-01.$root"
 	web_01="web-01.$root"
@@ -44,8 +51,11 @@ if [ "$domain_type" == "$default" ]; then
 		audit "$each_domain"
 	done
 else
-	echo "Auditing only the sub-domain: $domain_type"	# test
-	audit "$1"
+	# Audit only one subdomain
+
+	root="$"
+	sub_domain="$2.$1"
+	audit "$sub_domain"
 fi
 
 
