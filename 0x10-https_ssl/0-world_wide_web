@@ -27,7 +27,7 @@ audit()		# Audit a particular domain name
 	# echo "$ans"
 	sub_domain_type=$( echo "$1" | cut --delimiter='.' --fields=1 )
 	echo -n "The subdomain $sub_domain_type is a "
-	msg=$( echo "$ans" | awk --field-separator ' ' '{print $4 " record and points to " $5}' )
+	msg=$( echo "$ans" | awk -F ' ' '{print $4 " record and points to " $5}' )
 	echo "$msg"
 	return "$SUCCESS"
 }
