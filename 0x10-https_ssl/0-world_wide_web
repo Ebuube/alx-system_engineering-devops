@@ -20,7 +20,7 @@ audit()		# Audit a particular domain name
 	# echo "Arg: $1"	# test
 	ans=$( dig "$1" | grep -A1 'ANSWER SECTION' | tail -1 )
 	# echo "$ans"
-	msg=$( echo "$ans" | awk --field-separator ' ' '{print The subdomain "$1" is a "$4" record and points to "$5"}' )
+	msg=$( echo "$ans" | awk --field-separator ' ' '{print "The subdomain " $1" is a " $4 " record and points to " $5}' )
 	echo "$msg"
 	return "$SUCCESS"
 }
