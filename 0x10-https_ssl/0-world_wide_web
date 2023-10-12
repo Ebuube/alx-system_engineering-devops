@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Audit a web domain/sub-domain
+
+ENOPARAM=1	# No parameter provided
+SUCCESS=0	# Program executed successfully
+
+if [ "$#" -eq 0 ]; then
+	echo "Usage: $0 <domain name>"
+	exit "$ENOPARAM"
+fi
+
+# Bash Function
+ENOARG=23	# No argument passed to function
+audit()		# Audit a particular domain name
+{
+	if ! [ "$#" -eq  1 ]; then
+		echo "No argument passed"
+		return "$ENOARG"
+	fi
+	# echo "Arg: $1"	# test
+	ans=$( dig "$1" | grep -A1 'ANSWER SECTION' | tail -1 )
+	# echo "$ans"
+	msg=$( echo "$ans" | awk --field-separator ' ' '{print The subdomain "$1" is a "$4" record and points to "$5"}' )
+	echo "$msg"
+	return "$SUCCESS"
+}
+# Example of argument: www.holberton.online
+
+default="www"
+domain="$1"
+domain_type=$( echo "$1" | cut --delimiter='.' --fields=1 )
+
+if [ "$domain_type" == "$default" ]; then
+	echo "Your domain is the default domain: $domain_type"	# test
+	echo "Therefore, will audit: $default, lb-01, web-01 and web-02"	# test
+	root=$( echo "$domain" | cut --delimiter='.' --fields=2- )
+	www="www.$root"
+	lb_01="lb-01.$root"
+	web_01="web-01.$root"
+	web_02="web-02.$root"
+	declare -a domains=( "$www" "$lb_01" "$web_01" "$web_02" )
+
+	for each_domain in "${domains[@]}"; do
+		audit "$each_domain"
+	done
+else
+	echo "Auditing only the sub-domain: $domain_type"	# test
+	audit "$1"
+fi
+
+
+exit "$SUCCESS"
