@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# Install Firewall; block all incoming traffic but allow ssh, https ssl and http
 sudo ufw default deny incoming
 sudo ufw allow proto tcp from any to any port 22,443,80
 sudo ufw enable
