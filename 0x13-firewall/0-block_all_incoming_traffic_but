@@ -2,6 +2,7 @@
 # Install Firewall; block all incoming traffic but allow ssh, https ssl and http
 sudo apt-get --assume-yes update
 sudo apt-get --assume-yes install ufw
+sudo ufw --force reset
 sudo ufw default deny incoming
 sudo ufw allow proto tcp from any to any port 22
 sudo ufw allow proto tcp from any to any port 443
