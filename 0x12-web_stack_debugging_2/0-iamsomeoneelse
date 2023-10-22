@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Run the 'whoami' command as another user, passed as an argument
+
+EXIT_FAILURE=1
+EXIT_SUCCESS=0
+
+if ! [ "$#" -eq 1 ]; then
+	echo "Usage: $0 <user_name>"
+	exit "$EXIT_FAILURE"
+else
+	new_user="$1"
+	sudo --user="$new_user" whoami
+fi
+
+exit "$EXIT_SUCCESS"
