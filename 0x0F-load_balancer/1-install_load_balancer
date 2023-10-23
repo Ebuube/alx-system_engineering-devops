@@ -24,7 +24,7 @@ frontend ebube-frontend
 
 backend ebube-backend
 	balance roundrobin
-	server 146392-web-01 18.207.2.78:80 check
+	server 146392-web-01 34.207.61.179:80 check
 	server 146392-web-02 54.162.43.21:80 check
 ' >> "$proxy_config"
 
