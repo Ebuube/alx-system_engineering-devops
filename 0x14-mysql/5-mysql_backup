@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Create a backup and archive for my database
+# Log's in as root
+
+EXIT_FAILURE=1
+EXIT_SUCCESS=1
+if [ "$#" -ne 1 ]; then
+	echo "USAGE: $0 root_password"
+	exit "$EXIT_FAILURE"
+fi
+
+FORMAT='%d-%m-%Y'		# day-month-year
+now=$(date +$FORMAT)
+db_archive="./$now.tar.gz"
+sql_dump="backup.sql"
+password="$1"
+
+# Create database dump
+mysqldump -u root --password="$password" --all-databases > "$sql_dump"
+
+# Create archive
+tar --verbose --create --gzip --file="$db_archive" "$sql_dump"
+
+exit "$EXIT_SUCCESS"
