@@ -29,15 +29,9 @@ Safari/537.36 Avast/118.0.0.0"""
                             allow_redirects=False, params=params)
 
     if response.status_code == 200:
-        count = 0
         top_posts = response.json().get('data').get('children')
         if top_posts is not None:
             for post in top_posts:
-                if count >= MAX_POSTS:
-                    break
-                else:
-                    count += 1
-
                 print(post.get('data').get('title'))
     else:
         print(None)
