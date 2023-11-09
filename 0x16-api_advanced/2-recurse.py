@@ -24,24 +24,16 @@ Safari/537.36 Avast/118.0.0.0"""
             }
 
     params = {}
+    params['count'] = items
 
     if items > 0:
         params['after'] = after
-        params['count'] = items
 
     response = requests.get(url, headers=headers,
                             allow_redirects=False, params=params)
 
     if response.status_code == 200:
         top_posts = response.json().get('data').get('children')
-
-        '''
-        filename = 'response.json'
-        with open(filename, 'w') as fp:
-            import json
-            json.dump(top_posts, fp)
-            exit(1)
-        '''
 
         if top_posts is not None and len(top_posts) > 0:
             for post in top_posts:
@@ -53,7 +45,10 @@ Safari/537.36 Avast/118.0.0.0"""
             return recurse(subreddit, hot_list, after, items)
         else:
             # No more posts
-            return hot_list
+            if len(hot_list) > 0:
+                return hot_list
+            else:
+                return None
     else:
         # Request error: may be due to invalid subreddit
         return None
