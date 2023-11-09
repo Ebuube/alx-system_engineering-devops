@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 import requests
-from sys import argv
-import json
 
 
 def number_of_subscribers(subreddit):
