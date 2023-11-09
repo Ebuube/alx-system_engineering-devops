@@ -24,6 +24,7 @@ Safari/537.36 Avast/118.0.0.0"""
             }
 
     params = {}
+    params['show'] = 'all'
 
     if items > 0:
         params['count'] = items
@@ -32,26 +33,26 @@ Safari/537.36 Avast/118.0.0.0"""
     response = requests.get(url, headers=headers,
                             allow_redirects=False, params=params)
 
-    if response.status_code == 200:
-        top_posts = response.json().get('data').get('children')
-        after = response.json().get('data').get('after')
-        # print("after: {}".format(after))    # test
-
-        if top_posts is not None and len(top_posts) > 0:
-            for post in top_posts:
-                title = post.get('data').get('title')
-                # print("title: {}".format(title))
-                hot_list.append(title)
-
-        if after is not None:
-            items += len(top_posts)
-            return recurse(subreddit, hot_list, after, items)
-        else:
-            # No more posts
-            if len(hot_list) > 0:
-                return hot_list
-            else:
-                return None
-    else:
+    if response.status_code != 200:
         # Request error: may be due to invalid subreddit
         return None
+
+    top_posts = response.json().get('data').get('children')
+    after = response.json().get('data').get('after')
+    # print("after: {}".format(after))    # test
+
+    if top_posts is not None and len(top_posts) > 0:
+        for post in top_posts:
+            title = post.get('data').get('title')
+            # print("title: {}".format(title))
+            hot_list.append(title)
+
+    if after is None:
+        # No more posts
+        if len(hot_list) > 0:
+            return hot_list
+        else:
+            return 0
+
+    items += len(top_posts)
+    return recurse(subreddit, hot_list, after, items)
