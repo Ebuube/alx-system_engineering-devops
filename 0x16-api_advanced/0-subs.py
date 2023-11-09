@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+This module contains function to get some information concerning subereddits
+"""
 import requests
 
 
