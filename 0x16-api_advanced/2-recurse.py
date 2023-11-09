@@ -24,9 +24,9 @@ Safari/537.36 Avast/118.0.0.0"""
             }
 
     params = {}
-    params['count'] = items
 
     if items > 0:
+        params['count'] = items
         params['after'] = after
 
     response = requests.get(url, headers=headers,
@@ -34,14 +34,17 @@ Safari/537.36 Avast/118.0.0.0"""
 
     if response.status_code == 200:
         top_posts = response.json().get('data').get('children')
+        after = response.json().get('data').get('after')
+        # print("after: {}".format(after))    # test
 
         if top_posts is not None and len(top_posts) > 0:
             for post in top_posts:
                 title = post.get('data').get('title')
+                # print("title: {}".format(title))
                 hot_list.append(title)
 
+        if after is not None:
             items += len(top_posts)
-            after = top_posts[-1].get('data').get('name')
             return recurse(subreddit, hot_list, after, items)
         else:
             # No more posts
