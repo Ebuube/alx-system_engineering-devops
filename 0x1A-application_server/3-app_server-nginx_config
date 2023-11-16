@@ -1,0 +1,55 @@
+# Configuration for server - ONWUTA EBUBE GIDEON
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	# Include header in response
+	add_header X-Served-By $hostname;
+
+	# Add index
+	index index.html
+
+	server_name _;
+
+	location / {
+		# First attempt to serve a request as file, then
+		# as directiory, then fall back to dispalying a 404 ERROR.
+		try_files $uri $uri/ =404;
+	}
+
+	location /hbnb_static {
+		# Select directory
+		alias /data/web_static/current/;
+		autoindex off;
+	}
+
+	location /redirect_me {
+		# Have fun with redirection
+		return 301 https://www/youtube.com/watch?v=QH2-TGUlw4;
+	}
+
+	# Create a custome 404 error page
+	error_page 404 /404.html;
+	location = /404.html {
+		# to ensure it cannot be accessed directly by clients
+		internal;
+	}
+
+	# Pass requests from this url to my Web Server Gateway Interface `gunicorn`
+	# Which is binded to an instance of my flask app running on port 5000
+	# on a local network inteface 0.0.0.0
+	location /airbnb-onepage/ {
+		proxy_pass http://127.0.0.1:5000;
+	}
+
+
+	# Pass requests to /airbnb-dynamic/number_odd_or_even/(any integer)
+	# To the app server running on port 5001
+	location /airbnb-dynamic/number_odd_or_even/ {
+		rewrite /airbnb-dynamic/(.*) /$1 break;
+		proxy_pass http://127.0.0.1:5001;
+	}
+
+}
